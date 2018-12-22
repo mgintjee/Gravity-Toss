@@ -7,6 +7,7 @@ public class ObjectConfettiEmitter : MonoBehaviour {
     private GameObject[] GameObjectsConfetti;
     private Material[] MaterialsConfetti;
     private int Direction;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -15,7 +16,6 @@ public class ObjectConfettiEmitter : MonoBehaviour {
         string PathToMaterials = "Materials/Confetti/";
         GameObjectsConfetti = Resources.LoadAll<GameObject>(PathToPrefabs);
         MaterialsConfetti = Resources.LoadAll<Material>(PathToMaterials);
-        Debug.Log(transform.rotation.eulerAngles);
         Direction = (this.transform.rotation.eulerAngles.z == 90) ? -1 : 1;
     }
 	
@@ -33,7 +33,7 @@ public class ObjectConfettiEmitter : MonoBehaviour {
         float RandomVelocity = Random.Range(2.5f, 5f);
         int RandomPrefabIndex = Random.Range(0, GameObjectsConfetti.Length);
         int RandomMaterialIndex = Random.Range(0, MaterialsConfetti.Length);
-        float RandomDuration = Random.Range(1f, 3f);
+        float RandomDuration = Random.Range(1f, 2f);
 
         GameObject TemporaryConfettiHandler;
         Transform EmitterTarget = this.transform.Find("EmitterTarget");
