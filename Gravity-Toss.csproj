@@ -296,6 +296,7 @@
     <Compile Include="Assets\Scripts\ConfettiEmitterScript.cs" />
     <Compile Include="Assets\Scripts\ControlButtonScript.cs" />
     <Compile Include="Assets\Scripts\GoalScript.cs" />
+    <Compile Include="Assets\Scripts\ObjectConfettiEmitter.cs" />
     <Compile Include="Assets\Scripts\PaddleAI.cs" />
     <Compile Include="Assets\Scripts\SliderBallMaxSpeedScript.cs" />
     <Compile Include="Assets\Scripts\SliderGameObjectSpriteScript.cs" />
