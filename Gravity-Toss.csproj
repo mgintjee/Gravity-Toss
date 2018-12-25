@@ -286,6 +286,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\AIPaddle.cs" />
     <Compile Include="Assets\Scripts\BallScript.cs" />
     <Compile Include="Assets\Scripts\ButtonFairGameScript.cs" />
     <Compile Include="Assets\Scripts\ButtonMatchSpriteScript.cs" />
