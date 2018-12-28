@@ -7,7 +7,7 @@ public class ObjectConfettiEmitter : MonoBehaviour {
     private GameObject[] GameObjectsConfetti;
     private Material[] MaterialsConfetti;
     private int Direction;
-    private int EmitCount = 3;
+    private int EmitCount = 7;
     private float TimeGap = 1f;
 
 	// Use this for initialization
@@ -25,29 +25,54 @@ public class ObjectConfettiEmitter : MonoBehaviour {
 	void Update () {
         if (Input.GetMouseButtonDown(0))
         {
-            float CurrentTime = Time.time;
-            for(int i = 0; i < EmitCount; ++i)
-            {
-                EmitConfetti();
-            }
+            EmitAllConfetti();
         }
 	}
 
-    public void EmitConfetti()
+    public void EmitAllConfetti()
+    {
+        float AngleToEmit = 180 / (EmitCount + 1);
+        for (int i = 0; i < EmitCount; ++i)
+        {
+            EmitSingleConfetti(AngleToEmit * (i + 1));
+        }
+    }
+
+    public void EmitSingleConfetti(float Angle)
     {
         float RandomVelocity = Random.Range(5f, 15f);
         int RandomPrefabIndex = Random.Range(0, GameObjectsConfetti.Length);
         int RandomMaterialIndex = Random.Range(0, MaterialsConfetti.Length);
         float RandomDuration = Random.Range(1f, 2f);
 
+        Vector2 PositionVector = GetVectorFromAngle(Angle);
         GameObject TemporaryConfettiHandler;
-        Transform EmitterTarget = this.transform.Find("EmitterTarget");
-        TemporaryConfettiHandler = Instantiate(GameObjectsConfetti[RandomPrefabIndex], EmitterTarget.position, Quaternion.identity);
-        TemporaryConfettiHandler.transform.Find("Confetti_1.model").GetComponent<MeshRenderer>().material = MaterialsConfetti[RandomMaterialIndex];
+        Vector3 ConfettiPosition = GetPositionFromVector(PositionVector);
+        TemporaryConfettiHandler = Instantiate(GameObjectsConfetti[RandomPrefabIndex], ConfettiPosition, Quaternion.identity, this.transform);
+        TemporaryConfettiHandler.transform.GetChild(0).GetComponent<MeshRenderer>().material = MaterialsConfetti[RandomMaterialIndex];
+
         Rigidbody TemporaryRigidBody2D;
-        TemporaryRigidBody2D = TemporaryConfettiHandler.transform.Find("Confetti_1.model").GetComponent<Rigidbody>();
-        TemporaryRigidBody2D.velocity = new Vector3(Direction, 5f, -.25f).normalized * RandomVelocity;
-        Debug.Log(">" + this.transform.name + ":\n> Target:" + EmitterTarget.position + "\n > PushTowards:" + new Vector3(Direction, 5f, -.25f).normalized);
+        TemporaryRigidBody2D = TemporaryConfettiHandler.transform.GetChild(0).GetComponent<Rigidbody>();
+        TemporaryRigidBody2D.velocity = PositionVector.normalized * RandomVelocity;
+        Debug.Log(TemporaryRigidBody2D.velocity);
+
         Destroy(TemporaryConfettiHandler, RandomDuration);
+    }
+    private Vector2 GetVectorFromAngle(float AngleInDegrees)
+    {
+        float AngleInRadians = AngleInDegrees * Mathf.PI / 180;
+        int Direction = (this.transform.rotation.z > 0) ? -1 : 1;
+        float Adjacent = Direction * Mathf.Cos(AngleInRadians);
+        float Opposite = Direction * Mathf.Sin(AngleInRadians);
+        return new Vector2(Opposite, Adjacent);
+    }
+    private Vector3 GetPositionFromVector(Vector2 PositionVector)
+    {
+        Vector3 Position = new Vector3();
+        PositionVector = PositionVector * 1.5f;
+        Position.x = this.transform.position.x + PositionVector.x;
+        Position.y = this.transform.position.y + PositionVector.y;
+        Position.z = this.transform.position.z;
+        return Position;
     }
 }
