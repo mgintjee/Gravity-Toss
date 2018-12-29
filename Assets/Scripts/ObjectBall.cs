@@ -1,23 +1,24 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BallScript : MonoBehaviour {
-    public int maxSpeed;
-    public float speed;
-    public int rallyCount = 0;
-    public int wallCount = 0;
-    public int consecutiveRally = 0;
-    public int consecutiveWall = 0;
-    public int lastPaddle = 0;
-    public int gravScale = 4;
-    public float defaultSpawn = 5f;
-    public Vector3 ballDirection;
+public class ObjectBall : MonoBehaviour {
+    public int MaxSpeed;
+    public float Speed;
+    public int RallyCount = 0;
+    public int WallCount = 0;
+    public int ConsecutiveRally = 0;
+    public int ConsecutiveWall = 0;
+    public int LastPaddle = 0;
+    public int GravScale = 4;
+    public float DefaultSpawn = 5f;
+    public Vector3 BallDirection;
+    public Vector3 SpawnDefault;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
+        SpawnDefault = this.transform.position;
         canvasObject = GameObject.FindGameObjectWithTag("GameCanvas");
         RandomStart();
     }
@@ -26,12 +27,12 @@ public class BallScript : MonoBehaviour {
     {
         if (!paused)
         {
-            speed = this.GetComponent<Rigidbody2D>().velocity.magnitude;
-            if (speed > maxSpeed)
+            Speed = this.GetComponent<Rigidbody>().velocity.magnitude;
+            if (Speed > MaxSpeed)
             {
-                Vector3 normalizedVelocity = this.GetComponent<Rigidbody2D>().velocity.normalized;
-                this.GetComponent<Rigidbody2D>().velocity = normalizedVelocity * maxSpeed;
-                speed = maxSpeed;
+                Vector3 normalizedVelocity = this.GetComponent<Rigidbody>().velocity.normalized;
+                this.GetComponent<Rigidbody>().velocity = normalizedVelocity * MaxSpeed;
+                Speed = MaxSpeed;
             }
         }
     }
@@ -40,7 +41,7 @@ public class BallScript : MonoBehaviour {
     {
         Transform textTr = canvasObject.transform.Find("Commentary");
         Text text = textTr.GetComponent<Text>();
-        text.text = "\"Game has a Rally Count of " + rallyCount + "\"";
+        text.text = "\"Game has a Rally Count of " + RallyCount + "\"";
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
@@ -48,23 +49,23 @@ public class BallScript : MonoBehaviour {
         string tag = collision.gameObject.tag;
         if(tag.Equals("Wall"))
         {
-            wallCount++;
-            consecutiveWall++;
-            consecutiveRally = 0;
+            WallCount++;
+            ConsecutiveWall++;
+            ConsecutiveRally = 0;
         }
         else if( tag.EndsWith("Paddle"))
         {
-            rallyCount++;
-            consecutiveRally++;
-            consecutiveWall = 0;
+            RallyCount++;
+            ConsecutiveRally++;
+            ConsecutiveWall = 0;
 
             if ( tag.Equals("L Paddle"))
             {
-                lastPaddle = 1;
+                LastPaddle = 1;
             }
             else
             {
-                lastPaddle = 2;
+                LastPaddle = 2;
             }
         }
     }
@@ -73,10 +74,10 @@ public class BallScript : MonoBehaviour {
     {
         GiveCommentary();
         this.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-        rallyCount = 0;
-        wallCount = 0;
-        consecutiveWall = 0;
-        consecutiveRally = 0;
+        RallyCount = 0;
+        WallCount = 0;
+        ConsecutiveWall = 0;
+        ConsecutiveRally = 0;
         this.GetComponent<Rigidbody2D>().isKinematic = true;
 
         StartCoroutine(GoalDelay());
@@ -92,9 +93,9 @@ public class BallScript : MonoBehaviour {
         bool LStart = (Random.value > 0.5f);
         int randVel = Random.Range(5, 10);
         int dir = (LStart) ? -1 : 1;
-        this.GetComponent<Rigidbody2D>().isKinematic = false;
-        this.transform.position = new Vector3(0, defaultSpawn, 0);
-        this.GetComponent<Rigidbody2D>().velocity = new Vector3(dir * randVel, randVel, 0);
+        this.GetComponent<Rigidbody>().isKinematic = false;
+        this.transform.position = SpawnDefault;
+        this.GetComponent<Rigidbody>().velocity = new Vector3(dir * randVel, randVel, 0);
     }
 
     private IEnumerator GoalDelay()
@@ -105,8 +106,8 @@ public class BallScript : MonoBehaviour {
 
     public void HardReset()
     {
-        rallyCount = 0;
-        this.GetComponent<Rigidbody2D>().gravityScale = gravScale;
+        RallyCount = 0;
+        this.GetComponent<Rigidbody2D>().gravityScale = GravScale;
         RandomStart();
         //UpdateUI();
     }

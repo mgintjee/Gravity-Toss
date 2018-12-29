@@ -11,7 +11,7 @@ public class SliderBallMaxSpeedScript : MonoBehaviour
     
     void Start()
     {
-        int value = Ball.GetComponent<BallScript>().maxSpeed;
+        int value = Ball.GetComponent<ObjectBall>().MaxSpeed;
         SliderObject.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
         ValueText.text = value.ToString();
         SliderObject.value = value;
@@ -21,7 +21,7 @@ public class SliderBallMaxSpeedScript : MonoBehaviour
     {
         int value = (int)SliderObject.value;
         Debug.Log("Changing Ball Max Speed to " + value);
-        Ball.GetComponent<BallScript>().maxSpeed = value;
+        Ball.GetComponent<ObjectBall>().MaxSpeed = value;
         ValueText.text = value.ToString();
     }
 }

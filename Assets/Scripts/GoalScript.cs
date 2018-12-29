@@ -18,7 +18,7 @@ public class GoalScript : MonoBehaviour
             EmitConfetti();
             ResetPaddles();
             UpdateUI();
-            ball.GetComponent<BallScript>().ResetBall();
+            //ball.GetComponent<ObjectBall>().ResetBall();
         }
     }
 

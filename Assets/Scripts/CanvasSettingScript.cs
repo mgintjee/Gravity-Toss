@@ -92,7 +92,7 @@ public class CanvasSettingScript : MonoBehaviour {
 
         lGoal.GetComponent<GoalScript>().HardReset();
         rGoal.GetComponent<GoalScript>().HardReset();
-        ball.GetComponent<BallScript>().HardReset();
+        ball.GetComponent<ObjectBall>().HardReset();
     }
     void OnModifyClickAction()
     {

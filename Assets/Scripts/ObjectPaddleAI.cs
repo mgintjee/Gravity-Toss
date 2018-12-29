@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIPaddle : MonoBehaviour {
+public class ObjectPaddleAI : MonoBehaviour {
 
     public int Speed;
     public float Reflect;
@@ -10,21 +10,16 @@ public class AIPaddle : MonoBehaviour {
     public GameObject ObjectBall;
     public Vector3 SpawnDefault;
     public Vector2 BoundsMovement;
+    public float TargetX;
 
-    private float Margin = 1f;
-    private Vector3 BallCurrentPosition;
-    private Vector3 BallPreviousPosition;
-
-    void Start () {
+    public void Start () {
         SpawnDefault = this.transform.position;
         if(SpawnDefault.x < 0)
             BoundsMovement = new Vector2(-2.5f, 6f);
         else
             BoundsMovement = new Vector2(-6, 2.5f);
-
     }
-	
-	void FixedUpdate ()
+	public void FixedUpdate ()
     {
         BoundaryCheck();
         if (!ActivePlayer)
@@ -33,29 +28,41 @@ public class AIPaddle : MonoBehaviour {
         }
     }
 
-    void HandleAIMovement()
+    public void ResetPosition()
+    {
+        this.transform.position = SpawnDefault;
+    }
+    public void Move(int Direction)
+    {
+        if (Direction != 0)
+            this.transform.Translate(Direction * Vector3.right * Speed * Time.deltaTime);
+        else
+            this.transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
+    }
+
+    private void HandleAIMovement()
     {
         float ballX = ObjectBall.transform.position.x;
-        float paddleX = this.transform.position.x;
+        float PaddleX = this.transform.position.x;
         float PaddleSide = (SpawnDefault.x < 0) ? -1 : 1;
-        float targetX;
 
         BallCurrentPosition = ObjectBall.transform.position;
-        Vector3 ballDirection = BallCurrentPosition - BallPreviousPosition;
-        float ballDirectionX = ballDirection.x;
+        Vector3 BallDirection = BallCurrentPosition - BallPreviousPosition;
 
         if (PaddleSide > 0) // Right
         {
-            targetX = HandleRTurn(ballDirectionX, ballX, PaddleSide);
+            TargetX = HandleRTurn(BallDirection.x, ballX, PaddleSide);
         }
         else // Left
         {
-            targetX = HandleLTurn(ballDirectionX, ballX, PaddleSide);
+            TargetX = HandleLTurn(BallDirection.x, ballX, PaddleSide);
         }
 
-        if (!WithinRange(targetX, paddleX))
+        bool WithinMargin = WithinRange(TargetX, PaddleX);
+
+        if (!WithinMargin)
         {
-            HandleMovement(targetX, paddleX);
+            HandleMovement(TargetX, PaddleX);
         }
         else
         {
@@ -64,8 +71,7 @@ public class AIPaddle : MonoBehaviour {
 
         BallPreviousPosition = BallCurrentPosition;
     }
-
-    void HandleMovement(float targetX, float paddleX)
+    private void HandleMovement(float targetX, float paddleX)
     {
         if (targetX > paddleX)
         {
@@ -76,13 +82,12 @@ public class AIPaddle : MonoBehaviour {
             Move(-1);
         }
     }
-
-    float HandleLTurn(float ballDirectionX, float ballX, float tagValue)
+    private float HandleLTurn(float ballDirectionX, float ballX, float tagValue)
     {
         float targetX = 0f;
 
         if ((ballDirectionX < 0 && BallCurrentPosition.x < 0) ||
-            BallCurrentPosition.x < 5 * tagValue)
+            BallCurrentPosition.x < 8 * tagValue)
         {
             targetX = ballX;
         }
@@ -93,12 +98,12 @@ public class AIPaddle : MonoBehaviour {
 
         return targetX;
     }
-    float HandleRTurn(float ballDirectionX, float ballX, float tagValue)
+    private float HandleRTurn(float ballDirectionX, float ballX, float tagValue)
     {
         float targetX = 0f;
 
         if ((ballDirectionX > 0 && BallCurrentPosition.x > 0) ||
-            BallCurrentPosition.x > 5 * tagValue)
+            BallCurrentPosition.x > 8 * tagValue)
         {
             targetX = ballX;
         }
@@ -109,21 +114,16 @@ public class AIPaddle : MonoBehaviour {
 
         return targetX;
     }
-    bool WithinRange(float target, float value)
+    private bool WithinRange(float target, float value)
     {
-        return target + Margin > value && target - Margin < value;
+        return( target + Margin > value && target - Margin < value);
     }
-    public void Move(int Direction)
-    {
-        this.transform.Translate(Direction * Vector3.right * Speed * Time.deltaTime);
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag.Equals("Ball"))
+        if (collision.gameObject == ObjectBall)
         {
-            Vector3 ballVelocity = ObjectBall.GetComponent<Rigidbody2D>().velocity;
-            ObjectBall.GetComponent<Rigidbody2D>().velocity = ballVelocity * Reflect;
+            Vector3 BallVelocity = ObjectBall.GetComponent<Rigidbody>().velocity;
+            ObjectBall.GetComponent<Rigidbody>().velocity = BallVelocity * Reflect;
         }
     }
     private void BoundaryCheck()
@@ -140,8 +140,8 @@ public class AIPaddle : MonoBehaviour {
             this.transform.position = new Vector3(SpawnDefault.x+BoundsMovement.y, SpawnDefault.y, SpawnDefault.z);
         }
     }
-    private void ResetPosition()
-    {
-        this.transform.position = SpawnDefault;
-    }
+
+    private float Margin = 0.5f;
+    private Vector3 BallCurrentPosition;
+    private Vector3 BallPreviousPosition;
 }

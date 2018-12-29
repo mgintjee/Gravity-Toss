@@ -54,7 +54,6 @@ public class ObjectConfettiEmitter : MonoBehaviour {
         Rigidbody TemporaryRigidBody2D;
         TemporaryRigidBody2D = TemporaryConfettiHandler.transform.GetChild(0).GetComponent<Rigidbody>();
         TemporaryRigidBody2D.velocity = PositionVector.normalized * RandomVelocity;
-        Debug.Log(TemporaryRigidBody2D.velocity);
 
         Destroy(TemporaryConfettiHandler, RandomDuration);
     }
