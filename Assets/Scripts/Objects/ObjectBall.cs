@@ -14,6 +14,7 @@ public class ObjectBall : MonoBehaviour {
     public float DefaultSpawn = 5f;
     public Vector3 BallDirection;
     public Vector3 SpawnDefault;
+    public int GoalLine = -4;
 
     // Use this for initialization
     void Start ()
