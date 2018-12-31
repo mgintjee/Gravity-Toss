@@ -15,9 +15,7 @@ public class ObjectPaddleAI : MonoBehaviour {
     public void Start () {
         SpawnDefault = this.transform.position;
         if(SpawnDefault.x < 0)
-            BoundsMovement = new Vector2(-2.5f, 6f);
-        else
-            BoundsMovement = new Vector2(-6, 2.5f);
+            BoundsMovement = new Vector2(-BoundsMovement.y, -BoundsMovement.x);
     }
 	public void FixedUpdate ()
     {
@@ -117,14 +115,6 @@ public class ObjectPaddleAI : MonoBehaviour {
     private bool WithinRange(float target, float value)
     {
         return( target + Margin > value && target - Margin < value);
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject == ObjectBall)
-        {
-            Vector3 BallVelocity = ObjectBall.GetComponent<Rigidbody>().velocity;
-            ObjectBall.GetComponent<Rigidbody>().velocity = BallVelocity * Reflect;
-        }
     }
     private void BoundaryCheck()
     {

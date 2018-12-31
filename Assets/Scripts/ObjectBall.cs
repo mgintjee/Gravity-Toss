@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ObjectBall : MonoBehaviour {
-    public int MaxSpeed;
+    public int MaxSpeed = 25;
     public float Speed;
     public int RallyCount = 0;
     public int WallCount = 0;
@@ -20,7 +20,7 @@ public class ObjectBall : MonoBehaviour {
     {
         SpawnDefault = this.transform.position;
         canvasObject = GameObject.FindGameObjectWithTag("GameCanvas");
-        RandomStart();
+        HardReset();
     }
 
     private void Update()
@@ -44,9 +44,29 @@ public class ObjectBall : MonoBehaviour {
         text.text = "\"Game has a Rally Count of " + RallyCount + "\"";
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter(Collision collision)
     {
-        string tag = collision.gameObject.tag;
+        GameObject Object = collision.gameObject;
+        string ObjectName = Object.name;
+        Debug.Log(ObjectName);
+        switch (ObjectName)
+        {
+            case "ObjectBarrierGoal":
+                break;
+            case "ObjectBarrierBack":
+                break;
+            case "ObjectPaddle":
+                CollisionWithPaddle(Object);
+                break;
+            case "Confetti":
+                break;
+            case "Emitter":
+                break;
+            default:
+                break;
+                // Should Never Get Here
+        }
+        /*
         if(tag.Equals("Wall"))
         {
             WallCount++;
@@ -68,17 +88,22 @@ public class ObjectBall : MonoBehaviour {
                 LastPaddle = 2;
             }
         }
+        */
     }
-
+    private void CollisionWithPaddle(GameObject Paddle)
+    {
+        float ReflectPower = Paddle.GetComponent<ObjectPaddleAI>().Reflect;
+        this.GetComponent<Rigidbody>().velocity *= ReflectPower;
+    }
     public void ResetBall()
     {
         GiveCommentary();
-        this.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        this.GetComponent<Rigidbody>().velocity = Vector3.zero;
         RallyCount = 0;
         WallCount = 0;
         ConsecutiveWall = 0;
         ConsecutiveRally = 0;
-        this.GetComponent<Rigidbody2D>().isKinematic = true;
+        this.GetComponent<Rigidbody>().isKinematic = true;
 
         StartCoroutine(GoalDelay());
     }
@@ -107,7 +132,7 @@ public class ObjectBall : MonoBehaviour {
     public void HardReset()
     {
         RallyCount = 0;
-        this.GetComponent<Rigidbody2D>().gravityScale = GravScale;
+        //this.GetComponent<Rigidbody>(). = GravScale;
         RandomStart();
         //UpdateUI();
     }

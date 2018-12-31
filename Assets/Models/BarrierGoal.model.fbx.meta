@@ -7,14 +7,19 @@ ModelImporter:
   fileIDToRecycleName:
     100000: //RootNode
     100002: end_round_hole_55
+    100004: end_round_hole_13
     400000: //RootNode
     400002: end_round_hole_55
+    400004: end_round_hole_13
     2100000: customMaterial1
     2100002: _defaultMat
     2100004: black
     2300000: end_round_hole_55
+    2300002: end_round_hole_13
     3300000: end_round_hole_55
+    3300002: end_round_hole_13
     4300000: end_round_hole_55
+    4300002: end_round_hole_13
   externalObjects:
   - first:
       type: UnityEngine:Material

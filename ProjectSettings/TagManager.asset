@@ -10,15 +10,9 @@ TagManager:
   - Wall
   - SettingCanvas
   - Ball
-  - L Goal
-  - R Goal
-  - L Paddle
-  - R Paddle
-  - BluGoal
-  - BluPaddle
-  - RedGoal
-  - RedPaddle
   - Effect
+  - GoalLeft
+  - GoalRight
   layers:
   - Default
   - TransparentFX

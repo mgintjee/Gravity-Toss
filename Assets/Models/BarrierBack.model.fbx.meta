@@ -7,13 +7,68 @@ ModelImporter:
   fileIDToRecycleName:
     100000: //RootNode
     100002: BarrierBack.model_0
+    100004: bend_open_2
+    100006: bend_open_3
+    100008: bend_open_5
+    100010: bend_open_6
+    100012: bend_open_8
+    100014: bend_open_9
+    100016: block_default_11
+    100018: block_default_12
+    100020: side_1
+    100022: side_4
+    100024: side_7
     400000: //RootNode
     400002: BarrierBack.model_0
+    400004: bend_open_2
+    400006: bend_open_3
+    400008: bend_open_5
+    400010: bend_open_6
+    400012: bend_open_8
+    400014: bend_open_9
+    400016: block_default_11
+    400018: block_default_12
+    400020: side_1
+    400022: side_4
+    400024: side_7
     2100000: customMaterial1
     2100002: _defaultMat
     2300000: BarrierBack.model_0
+    2300002: bend_open_2
+    2300004: bend_open_3
+    2300006: bend_open_5
+    2300008: bend_open_6
+    2300010: bend_open_8
+    2300012: bend_open_9
+    2300014: block_default_11
+    2300016: block_default_12
+    2300018: side_1
+    2300020: side_4
+    2300022: side_7
     3300000: BarrierBack.model_0
+    3300002: bend_open_2
+    3300004: bend_open_3
+    3300006: bend_open_5
+    3300008: bend_open_6
+    3300010: bend_open_8
+    3300012: bend_open_9
+    3300014: block_default_11
+    3300016: block_default_12
+    3300018: side_1
+    3300020: side_4
+    3300022: side_7
     4300000: BarrierBack.model_0
+    4300002: side_1
+    4300004: bend_open_2
+    4300006: bend_open_3
+    4300008: side_4
+    4300010: bend_open_5
+    4300012: bend_open_6
+    4300014: side_7
+    4300016: bend_open_8
+    4300018: bend_open_9
+    4300020: block_default_11
+    4300022: block_default_12
   externalObjects:
   - first:
       type: UnityEngine:Material
