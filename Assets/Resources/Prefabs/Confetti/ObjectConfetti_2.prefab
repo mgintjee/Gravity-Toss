@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 96244482935584674}
   - component: {fileID: 64415737131860840}
   - component: {fileID: 54264681148439108}
+  - component: {fileID: 114188397330894992}
   m_Layer: 0
   m_Name: Confetti
   m_TagString: Untagged
@@ -236,3 +237,16 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
+--- !u!114 &114188397330894992
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1437893324584836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c38f2f2c258aca9409a9bb23f24f9d49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravityScale: 1
+  UseGravity: 1

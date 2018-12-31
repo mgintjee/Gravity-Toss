@@ -3,35 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ToolCustomVortex : MonoBehaviour {
+    public GameObject Ball;
+    public float Radius = 4;
+    public float VortexPull = 5;
+    public Vector3 ForceVector;
+    public bool ApplyForce;
 
-    private float ConfettiVortexPull = 2;
-    private float BallVortexPull = 1;
-    private float UpperConfettiRadius = 5;
-    private float LowerConfettiRadius = 1;
-    private float BallRadius = 3;
-
-
-    public bool UseGravity;
-    Rigidbody m_rb;
+    private void Start()
+    {
+        Ball = GameObject.Find("ObjectBall");
+    }
 
     void FixedUpdate()
     {
-        if(GameObject.Find("Confetti"))
-            ApplyPullOnConfetti();
+        ApplyForce = WithinRadius();
+        if (WithinRadius())
+            ApplyForceOnBall();
     }
-
-    private void ApplyPullOnConfetti()
+    private void ApplyForceOnBall()
     {
-        Vector3 Center = this.transform.position;
-        Collider[] colliders = Physics.OverlapSphere(Center, UpperConfettiRadius);
-        foreach (Collider hit in colliders)
-        {
-            Vector3 DistanceVector = this.transform.position - hit.transform.position;
-            float Distance = DistanceVector.magnitude;
-            if (hit && hit.name.Equals("Confetti") && Distance > LowerConfettiRadius && hit.transform != this.transform && hit.GetComponent<Rigidbody>())
-            {
-                hit.GetComponent<Rigidbody>().AddForce(DistanceVector.normalized * ConfettiVortexPull, ForceMode.Force);
-            }
-        }
+        Vector3 difference = this.transform.position - Ball.transform.position;
+        ForceVector = difference;
+        Ball.GetComponent<Rigidbody>().AddForce(difference.normalized * VortexPull, ForceMode.Force);
+    }
+    private bool WithinRadius()
+    {
+        float Distance = (Ball.transform.position - this.transform.position).magnitude;
+        return Distance < Radius;
     }
 }

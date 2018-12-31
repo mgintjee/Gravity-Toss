@@ -25,7 +25,7 @@ public class ToolCustomGravity : MonoBehaviour {
     {
         if (UseGravity)
         {
-            Vector3 gravity = globalGravity * gravityScale * Vector3.up;
+            Vector3 gravity = globalGravity * gravityScale * Vector3.forward;
             m_rb.AddForce(gravity, ForceMode.Acceleration);
         }
     }
