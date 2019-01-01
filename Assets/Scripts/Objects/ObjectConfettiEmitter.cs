@@ -18,14 +18,6 @@ public class ObjectConfettiEmitter : MonoBehaviour {
         GameObjectsConfetti = Resources.LoadAll<GameObject>(PathToPrefabs);
         MaterialsConfetti = Resources.LoadAll<Material>(PathToMaterials);
     }
-	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetMouseButtonDown(0))
-        {
-            EmitAllConfetti();
-        }
-	}
 
     public void EmitAllConfetti()
     {

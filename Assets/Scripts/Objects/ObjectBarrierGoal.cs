@@ -5,14 +5,34 @@ using UnityEngine;
 public class ObjectBarrierGoal : MonoBehaviour {
 
     public GameObject CanvasObject;
-    public GameObject Ball;
-    public int goalsConceded = 0;
-
+    public GameObject ObjectBall;
+    public int GoalsConceded = 0;
+    public bool GoalConceded = false;
+    
     public void HardReset()
     {
         ResetPaddles();
-        goalsConceded = 0;
+        GoalsConceded = 0;
         UpdateUI();
+    }
+
+    public void GoalWasConceded()
+    {
+        GoalsConceded++;
+        GoalConceded = true;
+        EmitConfetti();
+        StartCoroutine(GoalDelayAnimation());
+    }
+
+    private IEnumerator GoalDelayAnimation()
+    {
+        yield return new WaitForSeconds(GoalDelay);
+        Debug.Log("Reset Ball");
+        ObjectBall.GetComponent<TrailRenderer>().enabled = false;
+        ObjectBall.GetComponent<ObjectBall>().RandomStart();
+        yield return new WaitForSeconds(.25f);
+        ObjectBall.GetComponent<TrailRenderer>().enabled = true;
+        GoalConceded = false;
     }
 
     private void EmitConfetti()
@@ -40,4 +60,6 @@ public class ObjectBarrierGoal : MonoBehaviour {
         */
         this.GetComponent<TextScoreScript>().UpdateScore();
     }
+
+    private float GoalDelay = 2f;
 }

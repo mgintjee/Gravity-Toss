@@ -8,6 +8,7 @@ public class ToolCustomVortex : MonoBehaviour {
     public float VortexPull = 5;
     public Vector3 ForceVector;
     public bool ApplyForce;
+    public bool GoalConceded;
 
     private void Start()
     {
@@ -18,7 +19,12 @@ public class ToolCustomVortex : MonoBehaviour {
     {
         ApplyForce = WithinRadius();
         if (WithinRadius())
+        {
+            GoalConceded = true;
             ApplyForceOnBall();
+            if(!this.transform.parent.GetComponent<ObjectBarrierGoal>().GoalConceded)
+                this.transform.parent.GetComponent<ObjectBarrierGoal>().GoalWasConceded();
+        }
     }
     private void ApplyForceOnBall()
     {

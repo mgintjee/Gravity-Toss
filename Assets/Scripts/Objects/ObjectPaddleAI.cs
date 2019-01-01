@@ -131,7 +131,7 @@ public class ObjectPaddleAI : MonoBehaviour {
         }
     }
 
-    private float Margin = 0.5f;
+    private float Margin = 0.25f;
     private Vector3 BallCurrentPosition;
     private Vector3 BallPreviousPosition;
 }

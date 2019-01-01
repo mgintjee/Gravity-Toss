@@ -104,7 +104,6 @@ public class ObjectBall : MonoBehaviour {
         WallCount = 0;
         ConsecutiveWall = 0;
         ConsecutiveRally = 0;
-        this.GetComponent<Rigidbody>().isKinematic = true;
 
         StartCoroutine(GoalDelay());
     }
@@ -119,7 +118,6 @@ public class ObjectBall : MonoBehaviour {
         bool LStart = (Random.value > 0.5f);
         int randVel = Random.Range(5, 10);
         int dir = (LStart) ? -1 : 1;
-        this.GetComponent<Rigidbody>().isKinematic = false;
         this.transform.position = SpawnDefault;
         this.GetComponent<Rigidbody>().velocity = new Vector3(dir * randVel, randVel, 0);
     }
