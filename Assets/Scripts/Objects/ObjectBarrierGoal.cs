@@ -30,7 +30,7 @@ public class ObjectBarrierGoal : MonoBehaviour {
         Debug.Log("Reset Ball");
         ObjectBall.GetComponent<TrailRenderer>().enabled = false;
         ObjectBall.GetComponent<ObjectBall>().RandomStart();
-        yield return new WaitForSeconds(.25f);
+        yield return new WaitForSeconds(.35f);
         ObjectBall.GetComponent<TrailRenderer>().enabled = true;
         GoalConceded = false;
     }
