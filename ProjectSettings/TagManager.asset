@@ -13,6 +13,7 @@ TagManager:
   - Effect
   - GoalLeft
   - GoalRight
+  - Paddle
   layers:
   - Default
   - TransparentFX
