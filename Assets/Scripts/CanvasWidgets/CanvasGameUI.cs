@@ -7,27 +7,69 @@ using UnityEngine.UI;
 
 public class CanvasGameUI : MonoBehaviour {
     public int Player = 0;
-    public bool mouseDown;
-    // Use this for initialization
+
     void Start ()
     {
-        //GameObject canvasObject = GameObject.FindGameObjectWithTag("CanvasUI");
-
-        //settingCanvas = GameObject.FindGameObjectsWithTag("SettingCanvas")[0];
-        //gameCanvas = gameObject;
-        GatherButtons();
-        ListenerButtonLeft();
-        ListenerButtonRight();
-        ListenerButtonSettings();
+        GatherAttributeValues();
+        SetListeners();
     }
-
+    private void Update()
+    {
+        HideGatheredCanvases();
+    }
+    private void GatherAttributeValues()
+    {
+        GatherButtons();
+        GatherCanvases();
+    }
     private void GatherButtons()
     {
         ObjectButtonLeft = GameObject.Find("ButtonLeft");
         ObjectButtonRight = GameObject.Find("ButtonRight");
         ObjectButtonSettings = GameObject.Find("ButtonSettings");
     }
-    
+    private void SetListeners()
+    {
+        ListenerButtonLeft();
+        ListenerButtonRight();
+        ListenerButtonSettings();
+    }
+    private void GatherCanvases()
+    {
+        ObjectCanvasSettings = GameObject.Find("CanvasSettings");
+        ObjectCanvasModifications = GameObject.Find("CanvasModifications");
+        ObjectCanvasAbout = GameObject.Find("CanvasAbout");
+    }
+    private void HideGatheredCanvases()
+    {
+        if (HideSettings)
+        {
+            bool GatheredCanvasesSettings = ObjectCanvasSettings.GetComponent<CanvasSettings>().Gathered;
+            if (GatheredCanvasesSettings)
+            {
+                ObjectCanvasSettings.SetActive(false);
+                HideSettings = false;
+            }
+        }
+        if (HideModifications)
+        {
+            bool GatheredCanvasesModifications = ObjectCanvasModifications.GetComponent<CanvasModifications>().Gathered;
+            if (GatheredCanvasesModifications)
+            {
+                ObjectCanvasModifications.SetActive(false);
+                HideModifications = false;
+            }
+        }
+        if (HideAbout)
+        {
+            bool GatheredCanvasesAbout = ObjectCanvasAbout.GetComponent<CanvasAbout>().Gathered;
+            if (GatheredCanvasesAbout)
+            {
+                ObjectCanvasAbout.SetActive(false);
+                HideAbout = false;
+            }
+        }
+    }
     private void ListenerButtonLeft()
     {
         ObjectButtonLeft.transform.GetComponent<Button>().onClick.AddListener(ButtonActionLeft);
@@ -52,9 +94,6 @@ public class CanvasGameUI : MonoBehaviour {
             ObjectButtonLeft.GetComponent<CanvasGameUIButtonControl>().Player = Player;
             ObjectButtonRight.GetComponent<CanvasGameUIButtonControl>().Player = Player;
         }
-        else
-        {
-        }
     }
     private void ButtonActionRight()
     { 
@@ -65,15 +104,12 @@ public class CanvasGameUI : MonoBehaviour {
             ObjectButtonLeft.GetComponent<CanvasGameUIButtonControl>().Player = Player;
             ObjectButtonRight.GetComponent<CanvasGameUIButtonControl>().Player = Player;
         }
-        else
-        {
-        }
-
     }
     private void ButtonActionSettings()
     {
+        Time.timeScale = 0;
         this.gameObject.SetActive(false);
-        GameObject.Find("CanvasSettings").SetActive(true);
+        ObjectCanvasSettings.SetActive(true);
     }
 
     private void UpdateButtonsForPlayer()
@@ -84,70 +120,11 @@ public class CanvasGameUI : MonoBehaviour {
 
     public void UpdateButtonsForAI()
     {
-        ObjectButtonLeft.transform.Find("Text").gameObject.GetComponent<Text>().text = "Play As\nLeft\nPaddle";
-        ObjectButtonRight.transform.Find("Text").gameObject.GetComponent<Text>().text = "Play As\nRight\nPaddle";
+        ObjectButtonLeft.transform.Find("Text").gameObject.GetComponent<Text>().text = "Play As Left Paddle";
+        ObjectButtonRight.transform.Find("Text").gameObject.GetComponent<Text>().text = "Play As Right Paddle";
     }
 
     private GameObject ObjectButtonLeft, ObjectButtonRight, ObjectButtonSettings;
-    /*
-    void OnLeftClickAction()
-    {
-        if (player == 0)
-        {
-            player = 1;
-            playerPaddle = GameObject.FindGameObjectsWithTag("L Paddle")[0];
-            playerPaddle.GetComponent<PaddleAI>().player = true;
-            playerPaddle.transform.Find("Canvas").transform.Find("Text").gameObject.GetComponent<Text>().text = "Player";
-            UpdateButtonsForPlayer();
-        }
-    }
-    void OnRightClickAction()
-    {
-        if (player == 0)
-        {
-            player = 2;
-            playerPaddle = GameObject.FindGameObjectsWithTag("R Paddle")[0];
-            playerPaddle.GetComponent<PaddleAI>().player = true;
-            playerPaddle.transform.Find("Canvas").transform.Find("Text").gameObject.GetComponent<Text>().text = "Player";
-            UpdateButtonsForPlayer();
-        }
-    }
-
-    void OnSettingClickAction()
-    {
-        Time.timeScale = 0;
-        settingCanvas.GetComponent<CanvasSettingScript>().EnableCanvas();
-        DisableCanvas();
-    }
-
-    private void UpdateButtonsForPlayer()
-    {
-        lButton.transform.Find("Text").gameObject.GetComponent<Text>().text = "Move\nLeft";
-        rButton.transform.Find("Text").gameObject.GetComponent<Text>().text = "Move\nRight";
-    }
-
-    public void UpdateButtonsForAI()
-    {
-        lButton.transform.Find("Text").gameObject.GetComponent<Text>().text = "Play As\nLeft\nPaddle";
-        rButton.transform.Find("Text").gameObject.GetComponent<Text>().text = "Play As\nRight\nPaddle";
-    }
-
-    public void DisableCanvas()
-    {
-        gameCanvas.SetActive(false);
-    }
-
-    public void EnableCanvas()
-    {
-        gameCanvas.SetActive(true);
-    }
-
-    public int player;
-    public GameObject playerPaddle;
-    public Button lButton;
-    public Button rButton;
-    public Button sButton;
-    public GameObject settingCanvas;
-    public GameObject gameCanvas;
-    */
+    private GameObject ObjectCanvasSettings, ObjectCanvasModifications, ObjectCanvasAbout;
+    private bool HideSettings = true, HideModifications = true, HideAbout = true;
 }

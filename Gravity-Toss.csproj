@@ -13,12 +13,14 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectGenerator>VSTU</UnityProjectGenerator>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>2017.3.1f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -292,8 +294,11 @@
     <Compile Include="Assets\Scripts\CanvasGameScript.cs" />
     <Compile Include="Assets\Scripts\CanvasModifyScript.cs" />
     <Compile Include="Assets\Scripts\CanvasSettingScript.cs" />
+    <Compile Include="Assets\Scripts\CanvasWidgets\CanvasModifications.cs" />
     <Compile Include="Assets\Scripts\CanvasWidgets\CanvasGameUI.cs" />
     <Compile Include="Assets\Scripts\CanvasWidgets\CanvasGameUIButtonControl.cs" />
+    <Compile Include="Assets\Scripts\CanvasWidgets\CanvasAbout.cs" />
+    <Compile Include="Assets\Scripts\CanvasWidgets\CanvasSettings.cs" />
     <Compile Include="Assets\Scripts\ConfettiEmitterScript.cs" />
     <Compile Include="Assets\Scripts\ControlButtonScript.cs" />
     <Compile Include="Assets\Scripts\GoalScript.cs" />
