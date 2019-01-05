@@ -1397,8 +1397,8 @@ GameObject:
   - component: {fileID: 240554139}
   - component: {fileID: 240554140}
   m_Layer: 0
-  m_Name: ObjectBarrierGoal
-  m_TagString: GoalRight
+  m_Name: ObjectBarrierGoalRight
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1409,16 +1409,16 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 240554138}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5, y: 0, z: -12}
-  m_LocalScale: {x: 1, y: 1.0000005, z: 1.0000005}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1050445950}
   - {fileID: 677373753}
   - {fileID: 1538688935}
   - {fileID: 723780288}
-  m_Father: {fileID: 1183676408}
-  m_RootOrder: 2
+  m_Father: {fileID: 2098514431}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &240554140
 MonoBehaviour:
@@ -5545,7 +5545,7 @@ Prefab:
     - target: {fileID: 54587588909849082, guid: c41d4e8652f45cf4e994898ca5b99f62,
         type: 2}
       propertyPath: m_Mass
-      value: 10
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 114040941129042710, guid: c41d4e8652f45cf4e994898ca5b99f62,
         type: 2}
@@ -5925,7 +5925,7 @@ Prefab:
     - target: {fileID: 54587588909849082, guid: c41d4e8652f45cf4e994898ca5b99f62,
         type: 2}
       propertyPath: m_Mass
-      value: 10
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 114040941129042710, guid: c41d4e8652f45cf4e994898ca5b99f62,
         type: 2}
@@ -8196,8 +8196,7 @@ Transform:
   m_Children:
   - {fileID: 1231058034}
   - {fileID: 1143166837}
-  - {fileID: 240554139}
-  - {fileID: 1785580934}
+  - {fileID: 2098514431}
   m_Father: {fileID: 719490209}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12549,8 +12548,8 @@ GameObject:
   - component: {fileID: 1785580934}
   - component: {fileID: 1785580935}
   m_Layer: 0
-  m_Name: ObjectBarrierGoal (1)
-  m_TagString: GoalLeft
+  m_Name: ObjectBarrierGoalLeft
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12569,8 +12568,8 @@ Transform:
   - {fileID: 192650409}
   - {fileID: 475112566}
   - {fileID: 681359962}
-  m_Father: {fileID: 1183676408}
-  m_RootOrder: 3
+  m_Father: {fileID: 2098514431}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1785580935
 MonoBehaviour:
@@ -14558,6 +14557,36 @@ Prefab:
     - {fileID: 114273688289917512, guid: cd609a4cb1fff384e9ab93daa70a187a, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: cd609a4cb1fff384e9ab93daa70a187a, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2098514430
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2098514431}
+  m_Layer: 0
+  m_Name: CollectionBarrierGoals
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2098514431
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2098514430}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 240554139}
+  - {fileID: 1785580934}
+  m_Father: {fileID: 1183676408}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2107126297
 GameObject:
   m_ObjectHideFlags: 0

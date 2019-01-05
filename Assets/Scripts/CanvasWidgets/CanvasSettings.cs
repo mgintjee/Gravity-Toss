@@ -34,6 +34,7 @@ public class CanvasSettings : MonoBehaviour {
     }
     private void SetListeners()
     {
+        ListenerButtonQuit();
         ListenerButtonModify();
         ListenerButtonResume();
         ListenerButtonAbout();
@@ -44,7 +45,7 @@ public class CanvasSettings : MonoBehaviour {
     }
     private void ListenerButtonQuit()
     {
-
+        ObjectButtonQuit.transform.GetComponent<Button>().onClick.AddListener(ButtonActionQuit);
     }
     private void ListenerButtonModify()
     {
@@ -57,6 +58,10 @@ public class CanvasSettings : MonoBehaviour {
     private void ListenerButtonAbout()
     {
         ObjectButtonAbout.transform.GetComponent<Button>().onClick.AddListener(ButtonActionAbout);
+    }
+    private void ButtonActionQuit()
+    {
+        ObjectCanvasGameUI.GetComponent<CanvasGameUI>().UpdateButtonsForAI();
     }
     private void ButtonActionModify()
     {

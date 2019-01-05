@@ -49,7 +49,7 @@ public class ObjectBall : MonoBehaviour {
     {
         GameObject Object = collision.gameObject;
         string ObjectName = Object.name;
-        Debug.Log(ObjectName);
+        //Debug.Log(ObjectName);
         switch (ObjectName)
         {
             case "ObjectBarrierGoal":

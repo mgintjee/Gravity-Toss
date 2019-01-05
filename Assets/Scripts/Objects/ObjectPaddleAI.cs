@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ObjectPaddleAI : MonoBehaviour {
 
@@ -37,7 +38,14 @@ public class ObjectPaddleAI : MonoBehaviour {
         else
             this.transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
-
+    public void UpdateTextForPlayer()
+    {
+        this.transform.Find("Canvas").Find("Text").GetComponent<Text>().text = "Player";
+    }
+    public void UpdateTextForAI()
+    {
+        this.transform.Find("Canvas").Find("Text").GetComponent<Text>().text = "A.I.";
+    }
     private void HandleAIMovement()
     {
         float ballX = ObjectBall.transform.position.x;

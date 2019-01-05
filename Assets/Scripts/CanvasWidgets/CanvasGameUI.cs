@@ -13,10 +13,23 @@ public class CanvasGameUI : MonoBehaviour {
         GatherAttributeValues();
         SetListeners();
     }
-    private void Update()
+    void Update()
     {
         HideGatheredCanvases();
     }
+
+    public void UpdateButtonsForPlayer()
+    {
+        ObjectButtonLeft.GetComponent<CanvasGameUIButtonControl>().EnablePlayer(Player);
+        ObjectButtonRight.GetComponent<CanvasGameUIButtonControl>().EnablePlayer(Player);
+    }
+    public void UpdateButtonsForAI()
+    {
+        Player = 0;
+        ObjectButtonLeft.GetComponent<CanvasGameUIButtonControl>().DisablePlayer();
+        ObjectButtonRight.GetComponent<CanvasGameUIButtonControl>().DisablePlayer();
+    }
+
     private void GatherAttributeValues()
     {
         GatherButtons();
@@ -91,8 +104,6 @@ public class CanvasGameUI : MonoBehaviour {
         {
             Player = -1;
             UpdateButtonsForPlayer();
-            ObjectButtonLeft.GetComponent<CanvasGameUIButtonControl>().Player = Player;
-            ObjectButtonRight.GetComponent<CanvasGameUIButtonControl>().Player = Player;
         }
     }
     private void ButtonActionRight()
@@ -101,8 +112,6 @@ public class CanvasGameUI : MonoBehaviour {
         {
             Player = 1;
             UpdateButtonsForPlayer();
-            ObjectButtonLeft.GetComponent<CanvasGameUIButtonControl>().Player = Player;
-            ObjectButtonRight.GetComponent<CanvasGameUIButtonControl>().Player = Player;
         }
     }
     private void ButtonActionSettings()
@@ -111,19 +120,6 @@ public class CanvasGameUI : MonoBehaviour {
         this.gameObject.SetActive(false);
         ObjectCanvasSettings.SetActive(true);
     }
-
-    private void UpdateButtonsForPlayer()
-    {
-        ObjectButtonLeft.transform.Find("Text").gameObject.GetComponent<Text>().text = "Move Left";
-        ObjectButtonRight.transform.Find("Text").gameObject.GetComponent<Text>().text = "Move Right";
-    }
-
-    public void UpdateButtonsForAI()
-    {
-        ObjectButtonLeft.transform.Find("Text").gameObject.GetComponent<Text>().text = "Play As Left Paddle";
-        ObjectButtonRight.transform.Find("Text").gameObject.GetComponent<Text>().text = "Play As Right Paddle";
-    }
-
     private GameObject ObjectButtonLeft, ObjectButtonRight, ObjectButtonSettings;
     private GameObject ObjectCanvasSettings, ObjectCanvasModifications, ObjectCanvasAbout;
     private bool HideSettings = true, HideModifications = true, HideAbout = true;
