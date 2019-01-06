@@ -131,7 +131,6 @@ public class ObjectBall : MonoBehaviour {
     public void HardReset()
     {
         RallyCount = 0;
-        //this.GetComponent<Rigidbody>(). = GravScale;
         RandomStart();
         //UpdateUI();
     }

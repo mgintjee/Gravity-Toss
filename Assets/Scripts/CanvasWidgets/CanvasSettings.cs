@@ -34,6 +34,7 @@ public class CanvasSettings : MonoBehaviour {
     }
     private void SetListeners()
     {
+        ListenerButtonReset();
         ListenerButtonQuit();
         ListenerButtonModify();
         ListenerButtonResume();
@@ -41,7 +42,7 @@ public class CanvasSettings : MonoBehaviour {
     }
     private void ListenerButtonReset()
     {
-
+        ObjectButtonReset.transform.GetComponent<Button>().onClick.AddListener(ButtonActionReset);
     }
     private void ListenerButtonQuit()
     {
@@ -58,6 +59,12 @@ public class CanvasSettings : MonoBehaviour {
     private void ListenerButtonAbout()
     {
         ObjectButtonAbout.transform.GetComponent<Button>().onClick.AddListener(ButtonActionAbout);
+    }
+    private void ButtonActionReset()
+    {
+        GameObject.Find("ObjectBall").GetComponent<ObjectBall>().HardReset();
+        GameObject.Find("ObjectBarrierGoalLeft").GetComponent<ObjectBarrierGoal>().HardReset();
+        GameObject.Find("ObjectBarrierGoalRight").GetComponent<ObjectBarrierGoal>().HardReset();
     }
     private void ButtonActionQuit()
     {

@@ -117,7 +117,6 @@ public class CanvasGameUI : MonoBehaviour {
     private void ButtonActionSettings()
     {
         Time.timeScale = 0;
-        this.gameObject.SetActive(false);
         ObjectCanvasSettings.SetActive(true);
     }
     private GameObject ObjectButtonLeft, ObjectButtonRight, ObjectButtonSettings;

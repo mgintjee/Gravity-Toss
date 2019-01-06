@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ObjectBarrierGoal : MonoBehaviour {
 
@@ -20,6 +21,7 @@ public class ObjectBarrierGoal : MonoBehaviour {
     {
         GoalsConceded++;
         GoalConceded = true;
+        UpdateUI();
         EmitConfetti();
         StartCoroutine(GoalDelayAnimation());
     }
@@ -52,13 +54,20 @@ public class ObjectBarrierGoal : MonoBehaviour {
     }
     private void UpdateUI()
     {
-        /*
-        string textName = (this.tag.Equals("L Goal")) ?"R Score":"L Score";
-        Transform textTr = canvasObject.transform.Find(textName);
-        Text text = textTr.GetComponent<Text>();
-        text.text = textName + ": " + goalsConceded;
-        */
-        this.GetComponent<TextScoreScript>().UpdateScore();
+        GameObject TextScore = GameObject.Find("TextScore");
+        string StringText = TextScore.transform.Find("Text").GetComponent<Text>().text;
+        string[] StringTextParts = StringText.Split('-');
+        string NewTextScore = "";
+        if (this.name.Contains("Right"))
+        {
+            NewTextScore += GoalsConceded + " -" + StringTextParts[1];
+        }
+        else
+        {
+            NewTextScore += StringTextParts[0] + "- " + GoalsConceded;
+        }
+        Debug.Log(NewTextScore);
+        TextScore.transform.Find("Text").GetComponent<Text>().text = NewTextScore;
     }
 
     private float GoalDelay = 2f;

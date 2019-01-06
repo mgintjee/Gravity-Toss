@@ -93,7 +93,7 @@ public class ObjectPaddleAI : MonoBehaviour {
         float targetX = 0f;
 
         if ((ballDirectionX < 0 && BallCurrentPosition.x < 0) ||
-            BallCurrentPosition.x < 8 * tagValue)
+            BallCurrentPosition.x < 0.5 * tagValue)
         {
             targetX = ballX;
         }
@@ -109,7 +109,7 @@ public class ObjectPaddleAI : MonoBehaviour {
         float targetX = 0f;
 
         if ((ballDirectionX > 0 && BallCurrentPosition.x > 0) ||
-            BallCurrentPosition.x > 1 * tagValue)
+            BallCurrentPosition.x > 0.5 * tagValue)
         {
             targetX = ballX;
         }

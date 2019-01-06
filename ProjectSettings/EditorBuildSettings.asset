@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/GravityTossLegacy.unity
+    guid: 245412a8ce9890a44b8520901265d03d
   - enabled: 1
     path: Assets/Scenes/GravityToss.unity
-    guid: 245412a8ce9890a44b8520901265d03d
+    guid: 6f99b6a6acb5cc74ab279e3537101abe
