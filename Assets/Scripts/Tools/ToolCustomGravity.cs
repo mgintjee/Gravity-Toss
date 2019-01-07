@@ -7,7 +7,7 @@ public class ToolCustomGravity : MonoBehaviour {
     // Gravity Scale editable on the inspector
     // providing a gravity scale per object
 
-    public float gravityScale = 1.0f;
+    public float GravityScale = 1.0f;
 
     // Global Gravity doesn't appear in the inspector. Modify it here in the code
     // (or via scripting) to define a different default gravity for all objects.
@@ -25,7 +25,7 @@ public class ToolCustomGravity : MonoBehaviour {
     {
         if (UseGravity)
         {
-            Vector3 gravity = globalGravity * gravityScale * Vector3.forward;
+            Vector3 gravity = globalGravity * GravityScale * Vector3.forward;
             m_rb.AddForce(gravity, ForceMode.Acceleration);
         }
     }

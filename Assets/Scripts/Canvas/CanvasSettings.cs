@@ -74,6 +74,7 @@ public class CanvasSettings : MonoBehaviour {
     {
         this.gameObject.SetActive(false);
         ObjectCanvasModifications.SetActive(true);
+        ObjectCanvasModifications.GetComponent<CanvasModifications>().GatherGameAttributes();
     }
     private void ButtonActionResume()
     {

@@ -55,14 +55,7 @@ public class ObjectPaddleAI : MonoBehaviour {
         BallCurrentPosition = ObjectBall.transform.position;
         Vector3 BallDirection = BallCurrentPosition - BallPreviousPosition;
 
-        if (PaddleSide > 0) // Right
-        {
-            TargetX = HandleRTurn(BallDirection.x, ballX, PaddleSide);
-        }
-        else // Left
-        {
-            TargetX = HandleLTurn(BallDirection.x, ballX, PaddleSide);
-        }
+        TargetX = HandleTargetFinding(BallDirection.x, ballX, PaddleSide);
 
         bool WithinMargin = WithinRange(TargetX, PaddleX);
 
@@ -88,38 +81,24 @@ public class ObjectPaddleAI : MonoBehaviour {
             Move(-1);
         }
     }
-    private float HandleLTurn(float ballDirectionX, float ballX, float tagValue)
+    private float HandleTargetFinding(float BallDirectionX, float BallX, float PaddleSide)
     {
-        float targetX = 0f;
-
-        if ((ballDirectionX < 0 && BallCurrentPosition.x < 0) ||
-            BallCurrentPosition.x < 0.5 * tagValue)
+        float TargetX;
+        float BallDirectionSign = Mathf.Sign(BallDirectionX);
+        bool SameSideAsPaddle = BallX * PaddleSide > 0;
+        bool DirectedTowardsPaddle = BallDirectionSign == PaddleSide;
+        if(DirectedTowardsPaddle || SameSideAsPaddle)
         {
-            targetX = ballX;
+            TargetX = BallX;
         }
         else
         {
-            targetX = SpawnDefault.x;
+            TargetX = SpawnDefault.x;
         }
 
-        return targetX;
+        return TargetX;
     }
-    private float HandleRTurn(float ballDirectionX, float ballX, float tagValue)
-    {
-        float targetX = 0f;
 
-        if ((ballDirectionX > 0 && BallCurrentPosition.x > 0) ||
-            BallCurrentPosition.x > 0.5 * tagValue)
-        {
-            targetX = ballX;
-        }
-        else
-        {
-            targetX = SpawnDefault.x;
-        }
-
-        return targetX;
-    }
     private bool WithinRange(float target, float value)
     {
         return( target + Margin > value && target - Margin < value);

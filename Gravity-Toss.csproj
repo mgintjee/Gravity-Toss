@@ -288,15 +288,15 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\ButtonFairGameScript.cs" />
     <Compile Include="Assets\Scripts\ButtonMatchSpriteScript.cs" />
+    <Compile Include="Assets\Scripts\Canvas\CanvasAbout.cs" />
+    <Compile Include="Assets\Scripts\Canvas\CanvasGameUI.cs" />
+    <Compile Include="Assets\Scripts\Canvas\CanvasGameUIButtonControl.cs" />
+    <Compile Include="Assets\Scripts\Canvas\CanvasModifications.cs" />
+    <Compile Include="Assets\Scripts\Canvas\CanvasSettings.cs" />
     <Compile Include="Assets\Scripts\CanvasAboutScript.cs" />
     <Compile Include="Assets\Scripts\CanvasGameScript.cs" />
     <Compile Include="Assets\Scripts\CanvasModifyScript.cs" />
     <Compile Include="Assets\Scripts\CanvasSettingScript.cs" />
-    <Compile Include="Assets\Scripts\CanvasWidgets\CanvasAbout.cs" />
-    <Compile Include="Assets\Scripts\CanvasWidgets\CanvasGameUI.cs" />
-    <Compile Include="Assets\Scripts\CanvasWidgets\CanvasGameUIButtonControl.cs" />
-    <Compile Include="Assets\Scripts\CanvasWidgets\CanvasModifications.cs" />
-    <Compile Include="Assets\Scripts\CanvasWidgets\CanvasSettings.cs" />
     <Compile Include="Assets\Scripts\ConfettiEmitterScript.cs" />
     <Compile Include="Assets\Scripts\ControlButtonScript.cs" />
     <Compile Include="Assets\Scripts\GoalScript.cs" />

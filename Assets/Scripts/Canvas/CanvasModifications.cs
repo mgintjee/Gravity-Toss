@@ -9,10 +9,20 @@ public class CanvasModifications : MonoBehaviour {
     public bool Gathered = false;
 	void Start ()
     {
-        GatherAttributes();
+        GatherPreloadAttributes();
         SetListeners();
     }
-    private void GatherAttributes()
+    public void GatherGameAttributes()
+    {
+        GameObject Ball = GameObject.Find("ObjectBall");
+        GameObject PaddleLeft = GameObject.Find("ObjectBarrierGoalLeft").transform.Find("ObjectPaddle").gameObject;
+        GameObject PaddleRight = GameObject.Find("ObjectBarrierGoalRight").transform.Find("ObjectPaddle").gameObject;
+        OldBallSpeed = Ball.GetComponent<ObjectBall>().MaxSpeed;
+        OldBallGravity = Ball.GetComponent<ToolCustomGravity>().GravityScale;
+        OldPaddleReflectLeft = PaddleLeft.GetComponent<ObjectPaddleAI>().Reflect;
+    }
+
+    private void GatherPreloadAttributes()
     {
         GatherButtons();
         GatherCanvases();
@@ -21,41 +31,60 @@ public class CanvasModifications : MonoBehaviour {
     private void GatherButtons()
     {
         ObjectButtonApply = GameObject.Find("ButtonApply");
+        ObjectButtonBarrier = GameObject.Find("ButtonBarrierType");
     }
     private void GatherCanvases()
     {
         ObjectCanvasSettings = GameObject.Find("CanvasSettings");
     }
+    private void GatherSliders()
+    {
+        ObjectSliderPaddleReflectLeft = GameObject.Find("SliderLeftPaddleReflect");
+    }
     private void SetListeners()
     {
+        ListenerButtonBarrierType();
         ListenerButtonApply();
-    }
-    private void ListenerButtonReset()
-    {
-
-    }
-    private void ListenerButtonQuit()
-    {
-
-    }
-    private void ListenerButtonModify()
-    {
-
     }
     private void ListenerButtonApply()
     {
         ObjectButtonApply.transform.GetComponent<Button>().onClick.AddListener(ButtonActionApply);
     }
-    private void ListenerButtonAbout()
+    private void ListenerButtonBarrierType()
     {
-
+        ObjectButtonBarrier.transform.GetComponent<Button>().onClick.AddListener(ButtonActionBarrier);
     }
     private void ButtonActionApply()
     {
         this.gameObject.SetActive(false);
         ObjectCanvasSettings.SetActive(true);
     }
-    private GameObject ObjectButtonApply;
+    private void ButtonActionBarrier()
+    {
+        GameObject Barrier = GameObject.Find("ObjectBarrierBack");
+        if (BarrierCurved)
+        {
+            Barrier.transform.Find("BarrierBackCurved").gameObject.SetActive(false);
+            Barrier.transform.Find("BarrierBackFlat").gameObject.SetActive(true);
+            BarrierCurved = false;
+        }
+        else
+        {
+            Barrier.transform.Find("BarrierBackCurved").gameObject.SetActive(true);
+            Barrier.transform.Find("BarrierBackFlat").gameObject.SetActive(false);
+            BarrierCurved = true;
+        }
+    }
+    private void SliderActionPaddleReflectLeft()
+    {
+        float value = (float) System.Math.Round(ObjectSliderPaddleReflectLeft.GetComponent<Slider>().value, 1);
+        ObjectSliderPaddleReflectLeft.GetComponent<Slider>().value = value;
+    }
+    private bool BarrierCurved = true;
+    public float OldBallSpeed, OldBallGravity, OldPaddleSpeedLeft, OldPaddleSpeedRight, OldPaddleReflectLeft, OldPaddleReflectRight;
+    public float NewBallSpeed, NewBallGravity, NewPaddleSpeedLeft, NewPaddleSpeedRight, NewPaddleReflectLeft, NewPaddleReflectRight;
+    private GameObject ObjectSliderPaddleReflectLeft;
+    private GameObject ObjectButtonApply, ObjectButtonBarrier;
     private GameObject ObjectCanvasSettings;
     /*
      * 

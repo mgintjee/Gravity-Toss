@@ -29,7 +29,6 @@ public class ObjectBarrierGoal : MonoBehaviour {
     private IEnumerator GoalDelayAnimation()
     {
         yield return new WaitForSeconds(GoalDelay);
-        Debug.Log("Reset Ball");
         ObjectBall.GetComponent<TrailRenderer>().enabled = false;
         ObjectBall.GetComponent<ObjectBall>().RandomStart();
         yield return new WaitForSeconds(.35f);
@@ -66,7 +65,6 @@ public class ObjectBarrierGoal : MonoBehaviour {
         {
             NewTextScore += StringTextParts[0] + "- " + GoalsConceded;
         }
-        Debug.Log(NewTextScore);
         TextScore.transform.Find("Text").GetComponent<Text>().text = NewTextScore;
     }
 

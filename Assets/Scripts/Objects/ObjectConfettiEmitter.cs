@@ -6,7 +6,7 @@ public class ObjectConfettiEmitter : MonoBehaviour {
 
     private GameObject[] GameObjectsConfetti;
     private Material[] MaterialsConfetti;
-    private int EmitCount = 7;
+    private int EmitCount = 11;
     private float DistanceFromEmitter = 1.5f;
 
 	// Use this for initialization
