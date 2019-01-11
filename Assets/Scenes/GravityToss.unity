@@ -183,7 +183,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Barrier: Curved'
+  m_Text: Barrier Type
 --- !u!222 &2581272
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2511,7 +2511,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Float
+  m_Text: Integer
 --- !u!222 &364763156
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2599,8 +2599,8 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1802018949}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 10
-  m_WholeNumbers: 0
+  m_MaxValue: 5
+  m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2629,7 +2629,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 83.125, y: 90}
-  m_SizeDelta: {x: 166.25, y: 40}
+  m_SizeDelta: {x: 166.25, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &410656928
 GameObject:
@@ -3815,7 +3815,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Left Paddle Speed
+  m_Text: L Paddle Speed
 --- !u!222 &559141314
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5305,7 +5305,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Left Paddle Reflect
+  m_Text: L Paddle Reflect
 --- !u!222 &816703263
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6004,7 +6004,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 83.125, y: 20}
-  m_SizeDelta: {x: 166.25, y: 40}
+  m_SizeDelta: {x: 166.25, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &882515558
 MonoBehaviour:
@@ -6046,10 +6046,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 538138532}
   m_HandleRect: {fileID: 1396254395}
   m_Direction: 0
-  m_MinValue: 1
+  m_MinValue: 0
   m_MaxValue: 5
-  m_WholeNumbers: 0
-  m_Value: 1
+  m_WholeNumbers: 1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6125,7 +6125,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Float
+  m_Text: Integer
 --- !u!222 &883919978
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7533,7 +7533,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -83.125, y: 20}
-  m_SizeDelta: {x: 166.25, y: 40}
+  m_SizeDelta: {x: 166.25, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1052188204
 MonoBehaviour:
@@ -7575,10 +7575,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1585732312}
   m_HandleRect: {fileID: 1403042659}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 50
+  m_MinValue: 1
+  m_MaxValue: 10
   m_WholeNumbers: 1
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7804,7 +7804,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Right Paddle Speed
+  m_Text: R Paddle Speed
 --- !u!222 &1072409956
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7882,7 +7882,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Fair Game
+  m_Text: Game Fairness
 --- !u!222 &1074486191
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8379,7 +8379,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Float
+  m_Text: Integer
 --- !u!222 &1117370828
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9690,7 +9690,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Float
+  m_Text: Integer
 --- !u!222 &1328165986
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10078,7 +10078,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -83.125, y: -50}
-  m_SizeDelta: {x: 166.25, y: 40}
+  m_SizeDelta: {x: 166.25, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1381106811
 MonoBehaviour:
@@ -10120,10 +10120,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1051370941}
   m_HandleRect: {fileID: 588777806}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 50
+  m_MinValue: 1
+  m_MaxValue: 10
   m_WholeNumbers: 1
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -11338,7 +11338,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -83.125, y: 90}
-  m_SizeDelta: {x: 166.25, y: 40}
+  m_SizeDelta: {x: 166.25, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1573986133
 MonoBehaviour:
@@ -11380,10 +11380,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1936957648}
   m_HandleRect: {fileID: 2053836380}
   m_Direction: 0
-  m_MinValue: 25
-  m_MaxValue: 100
+  m_MinValue: 1
+  m_MaxValue: 20
   m_WholeNumbers: 1
-  m_Value: 25
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -11470,7 +11470,7 @@ GameObject:
   - component: {fileID: 1580165472}
   - component: {fileID: 1580165471}
   m_Layer: 5
-  m_Name: ButtonFairGame
+  m_Name: ButtonGameFairness
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12307,7 +12307,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Right Paddle Reflect
+  m_Text: R Paddle Reflect
 --- !u!222 &1665011423
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13319,6 +13319,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Gathered: 0
+  BarrierCurved: 0
+  GameFair: 0
+  OldBallSpeed: 0
+  OldGravityScale: 0
+  OldPaddleSpeedLeft: 0
+  OldPaddleSpeedRight: 0
+  OldPaddleReflectLeft: 0
+  OldPaddleReflectRight: 0
+  NewBallSpeed: 0
+  NewGravityScale: 0
+  NewPaddleSpeedLeft: 0
+  NewPaddleSpeedRight: 0
+  NewPaddleReflectLeft: 0
+  NewPaddleReflectRight: 0
 --- !u!1 &1881951665
 GameObject:
   m_ObjectHideFlags: 0
@@ -15205,7 +15219,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 83.125, y: -50}
-  m_SizeDelta: {x: 166.25, y: 40}
+  m_SizeDelta: {x: 166.25, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2127084470
 MonoBehaviour:
@@ -15247,10 +15261,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1103195552}
   m_HandleRect: {fileID: 727776418}
   m_Direction: 0
-  m_MinValue: 1
+  m_MinValue: 0
   m_MaxValue: 5
-  m_WholeNumbers: 0
-  m_Value: 1
+  m_WholeNumbers: 1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
