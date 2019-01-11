@@ -24,6 +24,10 @@ public class CanvasModifications : MonoBehaviour {
             UpdatePaddleSpeedLeft();
         if (OldPaddleSpeedRight != NewPaddleSpeedRight)
             UpdatePaddleSpeedRight();
+        if (OldPaddleReflectLeft != NewPaddleReflectLeft)
+            UpdatePaddleReflectLeft();
+        if (OldPaddleReflectRight != NewPaddleReflectRight)
+            UpdatePaddleReflectRight();
         UpdateBarrierBackType();
     }
     private void UpdateBallSpeed()
@@ -45,6 +49,16 @@ public class CanvasModifications : MonoBehaviour {
     {
         GameObject PaddleRight = GameObject.Find("ObjectBarrierGoalRight").transform.Find("ObjectPaddle").gameObject;
         PaddleRight.GetComponent<ObjectPaddleAI>().Speed = (int)(NewPaddleSpeedRight * BufferPaddleSpeed);
+    }
+    private void UpdatePaddleReflectLeft()
+    {
+        GameObject PaddleLeft = GameObject.Find("ObjectBarrierGoalLeft").transform.Find("ObjectPaddle").gameObject;
+        PaddleLeft.GetComponent<ObjectPaddleAI>().Reflect = (int)(NewPaddleReflectLeft * BufferPaddleReflect) + 1;
+    }
+    private void UpdatePaddleReflectRight()
+    {
+        GameObject PaddleRight = GameObject.Find("ObjectBarrierGoalRight").transform.Find("ObjectPaddle").gameObject;
+        PaddleRight.GetComponent<ObjectPaddleAI>().Reflect = (int)(NewPaddleReflectRight * BufferPaddleReflect) + 1;
     }
     private void UpdateBarrierBackType()
     {
@@ -106,9 +120,9 @@ public class CanvasModifications : MonoBehaviour {
         ObjectSliderPaddleSpeedRight.GetComponent<Slider>().value = OldPaddleSpeedRight/ BufferPaddleSpeed;
         ObjectSliderPaddleSpeedRight.GetComponent<Slider>().transform.Find("value").GetComponent<Text>().text = OldPaddleSpeedRight.ToString();
 
-        ObjectSliderPaddleReflectLeft.GetComponent<Slider>().value = OldPaddleReflectLeft/BufferPaddleReflect;
+        ObjectSliderPaddleReflectLeft.GetComponent<Slider>().value = (OldPaddleReflectLeft-1)/BufferPaddleReflect;
         ObjectSliderPaddleReflectLeft.GetComponent<Slider>().transform.Find("value").GetComponent<Text>().text = OldPaddleReflectLeft.ToString();
-        ObjectSliderPaddleReflectRight.GetComponent<Slider>().value = OldPaddleReflectRight/BufferPaddleReflect;
+        ObjectSliderPaddleReflectRight.GetComponent<Slider>().value = (OldPaddleReflectRight-1)/BufferPaddleReflect;
         ObjectSliderPaddleReflectRight.GetComponent<Slider>().transform.Find("value").GetComponent<Text>().text = OldPaddleReflectRight.ToString();
     }
 
@@ -218,14 +232,14 @@ public class CanvasModifications : MonoBehaviour {
     private void SliderActionPaddleReflectLeft()
     {
         NewPaddleReflectLeft = ObjectSliderPaddleReflectLeft.GetComponent<Slider>().value;
-        ObjectSliderPaddleReflectLeft.transform.Find("value").GetComponent<Text>().text = (BufferPaddleReflect * NewPaddleReflectLeft).ToString();
+        ObjectSliderPaddleReflectLeft.transform.Find("value").GetComponent<Text>().text = (1 + BufferPaddleReflect * NewPaddleReflectLeft).ToString();
         if (GameFair)
             UpdatePaddleReflectRight(NewPaddleReflectLeft);
     }
     private void SliderActionPaddleReflectRight()
     {
         NewPaddleReflectRight = ObjectSliderPaddleReflectRight.GetComponent<Slider>().value;
-        ObjectSliderPaddleReflectRight.transform.Find("value").GetComponent<Text>().text = (BufferPaddleReflect * NewPaddleReflectRight).ToString();
+        ObjectSliderPaddleReflectRight.transform.Find("value").GetComponent<Text>().text = (1+BufferPaddleReflect * NewPaddleReflectRight).ToString();
         if (GameFair)
             UpdatePaddleReflectLeft(NewPaddleReflectRight);
     }
@@ -245,13 +259,13 @@ public class CanvasModifications : MonoBehaviour {
     {
         NewPaddleReflectLeft = NewValue;
         ObjectSliderPaddleReflectLeft.GetComponent<Slider>().value = NewValue;
-        ObjectSliderPaddleReflectLeft.transform.Find("value").GetComponent<Text>().text = (BufferPaddleReflect * NewPaddleReflectLeft).ToString();
+        ObjectSliderPaddleReflectLeft.transform.Find("value").GetComponent<Text>().text = (1 + BufferPaddleReflect * NewPaddleReflectLeft).ToString();
     }
     private void UpdatePaddleReflectRight(float NewValue)
     {
         NewPaddleReflectRight = NewValue;
         ObjectSliderPaddleReflectRight.GetComponent<Slider>().value = NewValue;
-        ObjectSliderPaddleReflectRight.transform.Find("value").GetComponent<Text>().text = (BufferPaddleReflect * NewPaddleReflectRight).ToString();
+        ObjectSliderPaddleReflectRight.transform.Find("value").GetComponent<Text>().text = (1 + BufferPaddleReflect * NewPaddleReflectRight).ToString();
     }
 
     public bool BarrierCurved, GameFair;
@@ -261,7 +275,7 @@ public class CanvasModifications : MonoBehaviour {
     private GameObject ObjectButtonApply, ObjectButtonBarrier, ObjectButtonGameFairness;
     private GameObject ObjectCanvasSettings;
     private int BufferPaddleSpeed = 3, BufferBallSpeed = 5;
-    private float BufferPaddleReflect = 0.5f;
+    private float BufferPaddleReflect = 0.25f;
     /*
      * 
     void ButtonListeners()

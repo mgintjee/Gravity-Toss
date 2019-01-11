@@ -136,7 +136,7 @@ MeshCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1685290017964690}
-  m_Material: {fileID: 13400000, guid: 48059ed15b4e1174590977e46f4b9766, type: 2}
+  m_Material: {fileID: 13400000, guid: d01769d4f05b30d48b08489851f82604, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -248,5 +248,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c38f2f2c258aca9409a9bb23f24f9d49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityScale: 1
+  GravityScale: 1
   UseGravity: 1

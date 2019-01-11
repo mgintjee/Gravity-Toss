@@ -286,31 +286,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\ButtonFairGameScript.cs" />
-    <Compile Include="Assets\Scripts\ButtonMatchSpriteScript.cs" />
     <Compile Include="Assets\Scripts\Canvas\CanvasAbout.cs" />
     <Compile Include="Assets\Scripts\Canvas\CanvasGameUI.cs" />
     <Compile Include="Assets\Scripts\Canvas\CanvasGameUIButtonControl.cs" />
     <Compile Include="Assets\Scripts\Canvas\CanvasModifications.cs" />
     <Compile Include="Assets\Scripts\Canvas\CanvasSettings.cs" />
-    <Compile Include="Assets\Scripts\CanvasAboutScript.cs" />
-    <Compile Include="Assets\Scripts\CanvasGameScript.cs" />
-    <Compile Include="Assets\Scripts\CanvasModifyScript.cs" />
-    <Compile Include="Assets\Scripts\CanvasSettingScript.cs" />
-    <Compile Include="Assets\Scripts\ConfettiEmitterScript.cs" />
-    <Compile Include="Assets\Scripts\ControlButtonScript.cs" />
-    <Compile Include="Assets\Scripts\GoalScript.cs" />
     <Compile Include="Assets\Scripts\Objects\ObjectBall.cs" />
     <Compile Include="Assets\Scripts\Objects\ObjectBarrierGoal.cs" />
     <Compile Include="Assets\Scripts\Objects\ObjectConfettiEmitter.cs" />
     <Compile Include="Assets\Scripts\Objects\ObjectPaddleAI.cs" />
-    <Compile Include="Assets\Scripts\PaddleAI.cs" />
-    <Compile Include="Assets\Scripts\SliderBallMaxSpeedScript.cs" />
-    <Compile Include="Assets\Scripts\SliderGameObjectSpriteScript.cs" />
-    <Compile Include="Assets\Scripts\SliderGravityScript.cs" />
-    <Compile Include="Assets\Scripts\SliderPaddleReflectScript.cs" />
-    <Compile Include="Assets\Scripts\SliderPaddleSpeedScript.cs" />
-    <Compile Include="Assets\Scripts\TextScoreScript.cs" />
     <Compile Include="Assets\Scripts\Tools\ToolCustomGravity.cs" />
     <Compile Include="Assets\Scripts\Tools\ToolCustomVortex.cs" />
   </ItemGroup>
