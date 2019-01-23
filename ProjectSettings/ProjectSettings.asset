@@ -160,7 +160,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.HappyBananaStudio.GravityToss
   buildNumber: {}
-  AndroidBundleVersionCode: 2
+  AndroidBundleVersionCode: 3
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
@@ -243,8 +243,8 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/mgint/UnityProjects/Gravity Toss/user.keystore
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: C:/Users/mgint/Documents/GitHub/Gravity-Toss/user.keystore
+  AndroidKeyaliasName: gravitytoss
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
   AndroidEnableTango: 0
@@ -257,6 +257,13 @@ PlayerSettings:
   androidGamepadSupportLevel: 0
   resolutionDialogBanner: {fileID: 0}
   m_BuildTargetIcons:
+  - m_BuildTarget: 
+    m_Icons:
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: 8ec8cca1a629d7c47a3f2733872afa64, type: 3}
+      m_Width: 128
+      m_Height: 128
+      m_Kind: 0
   - m_BuildTarget: Android
     m_Icons:
     - serializedVersion: 2
@@ -288,13 +295,6 @@ PlayerSettings:
       m_Icon: {fileID: 0}
       m_Width: 36
       m_Height: 36
-      m_Kind: 0
-  - m_BuildTarget: 
-    m_Icons:
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 8ec8cca1a629d7c47a3f2733872afa64, type: 3}
-      m_Width: 128
-      m_Height: 128
       m_Kind: 0
   m_BuildTargetBatching: []
   m_BuildTargetGraphicsAPIs: []
